@@ -1,5 +1,13 @@
-from langchain import hub
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import PromptTemplate
 
-promt = hub.pull("rlm/rag-prompt")
+llm = ChatOpenAI(model_name ="gpt-4.1")
 
-print(promt)
+promt = PromptTemplate.from_template(
+    "summarize about the {country} in 100 words"
+)
+
+chain = promt | llm
+
+response = chain.invoke({"country": "Vietnam"})
+print(response.content)

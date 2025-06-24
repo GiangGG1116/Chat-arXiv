@@ -98,8 +98,9 @@ class Loader:
         return self.load(files, workers=workers)
 
 
-# if __name__ == "__main__":
-#     # Example usage
-#     loader = Loader(file_type="pdf", split_kwargs={"chunk_size": 300, "chunk_overlap": 50})
-#     documents = loader.load_dir("/root/chat-RAG-new/data", workers=4)
-#     print(f"Loaded {len(documents)} documents.")
+if __name__ == "__main__":
+    # Example usage
+    loader = Loader(file_type="pdf", split_kwargs={"chunk_size": 300, "chunk_overlap": 50})
+    documents = loader.load_dir("/root/chat-RAG-new/data", workers=4)
+    print(f"Loaded {len(documents)} documents.")
+    print(documents[0].page_content[:500])  # Print the first 500 characters of the first document
